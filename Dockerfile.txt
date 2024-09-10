@@ -1,0 +1,22 @@
+# Use a lightweight Python image
+FROM python:3.9-slim
+
+# Set working directory in the container
+WORKDIR /app
+
+# Copy any necessary files (if needed)
+# COPY requirements.txt .
+
+# Install any needed packages specified in requirements.txt
+# RUN pip install --no-cache-dir -r requirements.txt
+
+# Install any system dependencies (if needed)
+# RUN apt-get update && apt-get install -y \
+#     package-name \
+#     && rm -rf /var/lib/apt/lists/*
+
+# Copy the script that will be executed by Nextflow
+COPY process_data.py .
+
+# Set the default command to run when the container starts
+CMD ["python", "process_data.py"]
